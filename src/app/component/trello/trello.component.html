@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <a target="_blank" href="https://trello.com/app-key">Get Trello Key</a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <form autocomplete="on">
+                <div class="form-group">
+                    <label>Trello Key</label>
+                    <input class="form-control" name="key" type="text" [(ngModel)]="trelloKey" autocomplete="on"><br>
+                    <button target="_blank" [disabled]="!trelloKey" class="btn btn-info">Get Token</button>
+                    <!--  ng-href="https://trello.com/1/authorize?key={{trelloKey}}&name=HexagonalTrello&expiration=never&response_type=token" -->
+                </div>
+                <div class="form-group">
+                    <label>Trello Token</label>
+                    <input class="form-control" name="token" type="text" ng-model="trelloToken" autocomplete="on"><br>
+                    <button class="btn btn-info" (click)="getBoard()">Get Board</button>
+                </div>
+                <div class="form-group">
+                    <label>Starred Board name (จะมีเฉพาะบอร์ดที่มาร์คดาวใว้)</label>
+                    <select class="form-control" [disabled]="!boardList" ng-model="boardName" ng-change="getList()" ng-options="item.name for item in boardList">
+                      <option value="">เลือกบอร์ด</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label>List name</label>
+                    <select class="form-control" [disabled]="!listColumn" ng-model="doneListName" ng-options="item.name for item in listColumn">
+                      <option value="">เลือก Done List</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>รีพอตเดือน</label>
+                    <select class="form-control" ng-model="month">
+                      <option value="1">1-มกรา</option>
+                      <option value="2">2-กุมภา</option>
+                      <option value="3">3-มีนา</option>
+                      <option value="4">4-เมษา</option>
+                      <option value="5">5-พฤษภา</option>
+                      <option value="6">6-มิถุนา</option>
+                      <option value="7">7-กรกฏา</option>
+                      <option value="8">8-สิงหา</option>
+                      <option value="9">9-กันยา</option>
+                      <option value="10">10-ตุลา</option>
+                      <option value="11">11-พฤศจิกา</option>
+                      <option value="12">12-ธันวา</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label>รีพอตปี</label>
+                    <select class="form-control" ng-model="year">
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                  </select>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <img src="/images/Selection_018.png" alt="">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <button class="btn btn-success" ng-click="exports()">
+              <i class="fa fa-search"></i> Export
+          </button>
+        </div>
+    </div>
+</div>
