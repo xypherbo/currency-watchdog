@@ -4,9 +4,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { TrelloStore } from '../model/trello.model';
-import { Board } from '../model/board.model';
-import { List } from '../model/list.model';
 
 const BASE_URL = 'https://api.trello.com/';
 
