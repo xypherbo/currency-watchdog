@@ -1,34 +1,31 @@
-import { Http, Headers } from '@angular/http';
-import { Injectable } from '@angular/core';
+
 import { Store } from '@ngrx/store';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { TrelloActions } from '../store/trello';
+import { Actions, Effect } from '@ngrx/effects';
+import { of } from 'rxjs/observable/of';
+import { TrelloService } from '../api/trello.api';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/catch';
 
-
-const BASE_URL = 'https://api.trello.com/';
 
 @Injectable()
+export class TrelloEffects {
+  // Listen for the 'LOGIN' action
+  @Effect() getBoard$: Observable<TrelloActions> = this.actions$.ofType(TrelloActions.GET_BOARD)
+    .map(action => {
 
-export class TrelloService {
+    })
+    // If successful, dispatch success action with result
+    .map(data => ({ type: 'LOGIN_SUCCESS', payload: data }))
+    // If request fails, dispatch failed action
+    .catch(() => of({ type: 'LOGIN_FAILED' }));
 
-  boards: Observable<Array<Board>>;
-  lists: Observable<Array<List>>;
 
-  constructor(private http: Http, private store: Store<TrelloStore>) {
-    this.boards = store.select('board_name');
-    this.lists = store.select('list_name');
-  }
-
-  getBoard(key:String, token: String) {
-    this.http.get(`${BASE_URL}/1/members/me?
-    boards=starred&
-    board_fields=name&
-    organizations=all&
-    organization_fields=displayName&
-    key=${key}&
-    token=${token}`)
-      .map(res => res.json())
-      .map(payload => ({ type: 'SET_STARED_BOARD_NAME', payload }))
-      .subscribe(action => this.store.dispatch(action));
-  }
+  constructor(
+    private actions$: Actions
+  ) { }
 }
+
