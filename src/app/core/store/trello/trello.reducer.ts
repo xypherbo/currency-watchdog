@@ -19,7 +19,7 @@ interface UnsafeAction extends Action {
 
 export function trello(state: TrelloState, action: UnsafeAction): TrelloState {
     switch (action.type) {
-        case TrelloActions.GET_BOARD:
+        case TrelloActions.GET_BOARD_SUCCESS:
             return {...state};
         case TrelloActions.GET_STAR_LIST:
             return {...state};
