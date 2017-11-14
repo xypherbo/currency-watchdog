@@ -16,14 +16,15 @@
                 </div>
                 <div class="form-group">
                     <label>Trello Token</label>
-                    <input [(ngModel)]="trelloToken" class="form-control" name="token" type="text"  autocomplete="on">
+                    <input [(ngModel)]="trelloToken" class="form-control" name="token" type="text" autocomplete="on">
                     <br>
                     <button class="btn btn-info" (click)="getBoard()">Get Board</button>
                 </div>
                 <div class="form-group">
                     <label>Starred Board name (จะมีเฉพาะบอร์ดที่มาร์คดาวใว้)</label>
-                    <select class="form-control" [disabled]="!boardList" ng-model="boardName" ng-change="getList()" ng-options="item.name for item in boardList">
+                    <select class="form-control" [(ngModel)]="boardName" name="board_name" (change)="getList()">
                         <option value="">เลือกบอร์ด</option>
+                        <option *ngFor="let board of board_list$ | async" value="{{board}}">{{board.name}}</option>
                     </select>
                 </div>
                 <div class="form-group">

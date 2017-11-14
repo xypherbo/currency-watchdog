@@ -1,16 +1,21 @@
 import { Action } from '@ngrx/store';
 import { TrelloActions } from './trello.action';
+import { Board } from './trello.model';
 
 export interface TrelloState {
-    key: string;
-    token: string;
-    board_list: Array<any>;
+    trello: {
+        key: string;
+        token: string;
+        board_list: Array<Board>;
+    };
 }
 
 const initialState: TrelloState = {
-    key: '',
-    token: '',
-    board_list: []
+    trello: {
+        key: '',
+        token: '',
+        board_list: []
+    }
 };
 
 interface UnsafeAction extends Action {
@@ -20,9 +25,14 @@ interface UnsafeAction extends Action {
 export function trello(state: TrelloState, action: UnsafeAction): TrelloState {
     switch (action.type) {
         case TrelloActions.GET_BOARD_SUCCESS:
-            return {...state};
+            return Object.assign({}, state,
+                {
+                    trello: {
+                        board_list: action.payload.boards
+                    }
+                });
         case TrelloActions.GET_STAR_LIST:
-            return {...state};
+            return { ...state };
         default:
             return state;
     }

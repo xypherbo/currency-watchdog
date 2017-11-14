@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { TrelloActions, TrelloState } from '../../store/trello';
+import { TrelloActions, TrelloState, Board } from '../../store/trello';
 
 @Component({
   selector: 'app-trello',
@@ -12,9 +12,11 @@ export class TrelloComponent implements OnInit {
 
   trelloKey: string;
   trelloToken: string;
+  board_list$: Observable<Board[]>;
 
   constructor(private store: Store<TrelloState>) {
-
+    this.board_list$ = this.store.select<Board[]>(state => state.trello.board_list);
+    this.board_list$.subscribe(console.log)
   }
 
   getToken() {
