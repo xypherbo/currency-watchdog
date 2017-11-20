@@ -9,8 +9,8 @@ export interface AppState {
 
 export let AppReducers: ActionReducerMap<AppState> = {
     trello
-}
+};
 
 export let AppActions = [
     TrelloActions
-]
+];

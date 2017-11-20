@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { TrelloActions, TrelloState, Board } from '../../store/trello';
+import * as fromRoot from '../../store/trello';
 
 @Component({
   selector: 'app-trello',
@@ -12,11 +12,11 @@ export class TrelloComponent implements OnInit {
 
   trelloKey: string;
   trelloToken: string;
-  board_list$: Observable<Board[]>;
+  board_list$: Observable<fromRoot.Board[]>;
 
-  constructor(private store: Store<TrelloState>) {
-    this.board_list$ = this.store.select<Board[]>(state => state.trello.board_list);
-    this.board_list$.subscribe(console.log)
+  constructor(private store: Store<fromRoot.TrelloState>) {
+    this.board_list$ = this.store.select(fromRoot.selectBoardList);
+    this.board_list$.subscribe(console.log);
   }
 
   getToken() {
@@ -25,7 +25,7 @@ export class TrelloComponent implements OnInit {
 
   getBoard() {
     this.store.dispatch({
-      type: TrelloActions.GET_BOARD,
+      type: fromRoot.TrelloActions.GET_BOARD,
       payload: {
         key: this.trelloKey,
         token: this.trelloToken

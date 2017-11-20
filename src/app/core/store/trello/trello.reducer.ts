@@ -1,35 +1,29 @@
-import { Action } from '@ngrx/store';
+import { Action, createSelector, createFeatureSelector } from '@ngrx/store';
 import { TrelloActions } from './trello.action';
 import { Board } from './trello.model';
 
 export interface TrelloState {
-    trello: {
-        key: string;
-        token: string;
-        board_list: Array<Board>;
-    };
+    key: string;
+    token: string;
+    board_list: Array<Board>;
 }
 
 const initialState: TrelloState = {
-    trello: {
-        key: '',
-        token: '',
-        board_list: []
-    }
+    key: '',
+    token: '',
+    board_list: []
 };
 
 interface UnsafeAction extends Action {
     payload?: any;
 }
 
-export function trello(state: TrelloState, action: UnsafeAction): TrelloState {
+export function trello(state: TrelloState = initialState, action: UnsafeAction): TrelloState {
     switch (action.type) {
         case TrelloActions.GET_BOARD_SUCCESS:
             return Object.assign({}, state,
                 {
-                    trello: {
-                        board_list: action.payload.boards
-                    }
+                    board_list: action.payload.boards
                 });
         case TrelloActions.GET_STAR_LIST:
             return { ...state };
@@ -37,3 +31,6 @@ export function trello(state: TrelloState, action: UnsafeAction): TrelloState {
             return state;
     }
 }
+
+export const selectTrello = createFeatureSelector<TrelloState>('trello')
+export const selectBoardList = createSelector(selectTrello, (state: TrelloState) => state.board_list);
