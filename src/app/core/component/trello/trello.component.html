@@ -22,15 +22,13 @@
                 </div>
                 <div class="form-group">
                     <label>Starred Board name (จะมีเฉพาะบอร์ดที่มาร์คดาวใว้)</label>
-                    <select class="form-control" [(ngModel)]="selected_board" name="board_name" (change)="getList(selected_board)">
-                        <option value="">เลือกบอร์ด</option>
+                    <select class="form-control" [disabled]="(board_list$ |async).length == 0" [(ngModel)]="selected_board" name="board_name" (change)="getList(selected_board)">
                         <option *ngFor="let board of board_list$ | async" [ngValue]="board">{{board.name}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Column name</label>
-                    <select class="form-control" [disabled]="!listColumn" [(ngModel)]="selected_column">
-                        <option value="">เลือก Done List</option>
+                    <select class="form-control" [disabled]="(board_column$ |async).length == 0" [(ngModel)]="selected_column"  name="board_column">
                         <option *ngFor="let column of board_column$ | async" [ngValue]="column">{{column.name}}</option>
                     </select>
                 </div>

@@ -18,7 +18,6 @@ export class TrelloComponent implements OnInit {
   constructor(private store: Store<fromRoot.TrelloState>) {
     this.board_list$ = this.store.select(fromRoot.selectBoardList);
     this.board_column$ = this.store.select(fromRoot.selectBoardColumnList);
-    this.board_list$.subscribe(console.log);
   }
 
   getToken() {
