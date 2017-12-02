@@ -21,10 +21,9 @@ interface UnsafeAction extends Action {
 export function trello(state: TrelloState = initialState, action: UnsafeAction): TrelloState {
     switch (action.type) {
         case TrelloActions.GET_BOARD_SUCCESS:
-            return Object.assign({}, state,
-                {
-                    board_list: action.payload.boards
-                });
+            return Object.assign({}, state, {
+                board_list: action.payload.boards
+            });
         case TrelloActions.GET_STAR_LIST:
             return { ...state };
         default:
@@ -32,5 +31,5 @@ export function trello(state: TrelloState = initialState, action: UnsafeAction):
     }
 }
 
-export const selectTrello = createFeatureSelector<TrelloState>('trello')
+export const selectTrello = createFeatureSelector<TrelloState>('trello');
 export const selectBoardList = createSelector(selectTrello, (state: TrelloState) => state.board_list);
