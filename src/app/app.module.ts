@@ -1,41 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { RouterModule } from '@angular/router'
 
-import { AppComponent } from './app.component';
-import { LandingComponent } from './core/component/landing/landing.component';
-import { LinkpageComponent } from './core/component/linkpage/linkpage.component';
-import { TrelloComponent } from './core/component/trello/trello.component';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
 
 import { CoreModule } from './core';
-
-const appRoutes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'links', component: LinkpageComponent },
-  { path: 'trello', component: TrelloComponent },
-  { path: '**', component: LandingComponent }
-];
+import { AppComponent } from './app.component';
+import { LandingModule } from './landing/landing.module'
+import { LinkpageModule } from './linkpage/linkpage.module'
+import { TrelloModule } from './trello/trello.module'
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent,
-    LinkpageComponent,
-    TrelloComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule,
+    RouterModule,
     CoreModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
+    LandingModule,
+    LinkpageModule,
+    TrelloModule,
+    AngularFireModule.initializeApp(environment.firebase),
     StoreDevtoolsModule.instrument({
       maxAge: 25 //  Retains last 25 states
     })
