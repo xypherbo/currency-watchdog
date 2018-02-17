@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { LinkpageRoutingModule } from './linkpage-routing.module';
+import { RouterModule } from '@angular/router'
 import { LinkpageComponent } from './linkpage.component'
 
 @NgModule({
   imports: [
     CommonModule,
-    LinkpageRoutingModule
+    RouterModule
   ],
-  declarations: [LinkpageComponent]
+  declarations: [LinkpageComponent],
+  exports: [LinkpageComponent]
 })
 export class LinkpageModule { }

@@ -1,19 +1,20 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="showNav = !showNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">
-        <img height="26" src="assets/img/1_Primary_logo_on_transparent_406x63.png"></a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" (click)="showNav = !showNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">
+    <img height="26" src="assets/img/1_Primary_logo_on_transparent_406x63.png">
+  </a>
 
-    <div class="collapse navbar-collapse " [ngClass]="{'show':showNav}">
-        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/links">Link</a>
-            </li>
-        </ul>
-    </div>
+  <div class="collapse navbar-collapse " [ngClass]="{'show':showNav}">
+    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/links">Link</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 <router-outlet></router-outlet>

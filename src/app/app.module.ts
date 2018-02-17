@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 
 import { CoreModule } from './core';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module'
 import { LandingModule } from './landing/landing.module'
 import { LinkpageModule } from './linkpage/linkpage.module'
 import { TrelloModule } from './trello/trello.module'
@@ -24,6 +25,8 @@ import { TrelloModule } from './trello/trello.module'
     LandingModule,
     LinkpageModule,
     TrelloModule,
+    AppRoutingModule,
+
     AngularFireModule.initializeApp(environment.firebase),
     StoreDevtoolsModule.instrument({
       maxAge: 25 //  Retains last 25 states
