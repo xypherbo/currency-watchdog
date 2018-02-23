@@ -4,11 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component'
 import { LinkpageComponent } from "./linkpage/linkpage.component";
 import { TrelloComponent } from "./trello/trello.component";
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
     { path: '', component: LandingComponent },
     { path: 'links', component: LinkpageComponent },
     { path: 'trello', component: TrelloComponent },
+    { path: 'wishlist', component: WishlistComponent },
     { path: '**', component: LandingComponent },
 ];
 
