@@ -1,0 +1,7 @@
+.container-fluid {
+  margin-left: 240px;
+}
+
+.card-img-top {
+  object-fit: scale-down;
+}

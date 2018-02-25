@@ -10,7 +10,6 @@ const routes: Routes = [
     { path: '', component: LandingComponent },
     { path: 'links', component: LinkpageComponent },
     { path: 'trello', component: TrelloComponent },
-    { path: 'wishlist', component: WishlistComponent },
     { path: '**', component: LandingComponent },
 ];
 

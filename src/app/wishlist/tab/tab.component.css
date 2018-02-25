@@ -1,0 +1,11 @@
+._fix-left {
+  width: 240px;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  border-right: 1px solid #ccc;
+}
+
+._fix-left .list-group-item {
+  border-right: none;
+}
